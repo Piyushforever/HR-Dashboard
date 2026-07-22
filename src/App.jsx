@@ -8,15 +8,16 @@ import {
   AlertTriangle, DollarSign, Gauge, Building2, Lock, ChevronDown
 } from "lucide-react";
 
-const BLUE = "#0054A6";
-const BLUE_DARK = "#002F5F";
-const GREEN = "#1E9E6A";
-const AMBER = "#FF7A00";
+const BLUE = "#005DAC";
+const BLUE_DARK = "#024E85";
+const CYAN = "#0D8FBB";
+const GREEN = "#00AA55";
+const AMBER = "#F2994A";
 const RED = "#D64545";
 const INK = "#12233B";
-const MUTE = "#6B7A8D";
+const MUTE = "#6B7280";
 const LINE = "#E2E9F2";
-const BG = "#F2F6FB";
+const BG = "#F2F7FB";
 
 const deptHealth = [
   { name: "Operations", score: 82 },
@@ -102,6 +103,26 @@ function Panel({ title, children, note, style }) {
   );
 }
 
+function Logo() {
+  const [broken, setBroken] = useState(false);
+  if (broken) {
+    return (
+      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+        <div style={{ width: 34, height: 34, borderRadius: 8, background: BLUE, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontWeight: 800, fontSize: 15 }}>B</div>
+        <span style={{ fontWeight: 800, color: BLUE_DARK, fontSize: 15, letterSpacing: 0.3 }}>BAJAJ</span>
+      </div>
+    );
+  }
+  return (
+    <img
+      src="/logo.png"
+      alt="Bajaj Health"
+      style={{ width: 36, height: 36, objectFit: "contain" }}
+      onError={() => setBroken(true)}
+    />
+  );
+}
+
 function heatColor(v, type) {
   if (type === "burnout") {
     if (v >= 47) return "#F7D9D9";
@@ -119,7 +140,7 @@ export default function App() {
     <div style={{ minHeight: "100vh", background: BG, fontFamily: "system-ui, -apple-system, sans-serif" }}>
       <div style={{ background: "#fff", borderBottom: "1px solid " + LINE, padding: "14px 28px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <img src="/logo.png" alt="Bajaj Health" style={{ width: 36, height: 36, objectFit: "contain" }} />
+          <Logo />
           <div>
             <div style={{ fontSize: 16, fontWeight: 800, color: INK }}>Bajaj Finserv Health</div>
             <div style={{ fontSize: 12, color: MUTE }}>HR wellness dashboard</div>
@@ -152,7 +173,7 @@ export default function App() {
                 <YAxis domain={[0, 100]} tick={{ fontSize: 12, fill: MUTE }} axisLine={false} tickLine={false} />
                 <Tooltip cursor={{ fill: "#F0F5FB" }} />
                 <Bar dataKey="score" radius={[6, 6, 0, 0]}>
-                  {deptHealth.map((d, i) => <Cell key={i} fill={d.score >= 75 ? GREEN : d.score >= 68 ? BLUE : AMBER} />)}
+                  {deptHealth.map((d, i) => <Cell key={i} fill={d.score >= 75 ? GREEN : d.score >= 68 ? CYAN : AMBER} />)}
                 </Bar>
               </BarChart>
             </ResponsiveContainer>
