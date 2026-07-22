@@ -4,19 +4,19 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Sankey
 } from "recharts";
 import {
-  Users, Activity, TrendingUp, TrendingDown, ShieldCheck, Heart,
+  Users, Activity, TrendingUp, TrendingDown, ShieldCheck,
   AlertTriangle, DollarSign, Gauge, Building2, Lock, ChevronDown
 } from "lucide-react";
 
-const BLUE = "#1560BD";
-const BLUE_DARK = "#0B3D82";
+const BLUE = "#0054A6";
+const BLUE_DARK = "#002F5F";
 const GREEN = "#1E9E6A";
-const AMBER = "#E8912D";
+const AMBER = "#FF7A00";
 const RED = "#D64545";
 const INK = "#12233B";
 const MUTE = "#6B7A8D";
-const LINE = "#E7ECF2";
-const BG = "#F5F8FC";
+const LINE = "#E2E9F2";
+const BG = "#F2F6FB";
 
 const deptHealth = [
   { name: "Operations", score: 82 },
@@ -119,9 +119,7 @@ export default function App() {
     <div style={{ minHeight: "100vh", background: BG, fontFamily: "system-ui, -apple-system, sans-serif" }}>
       <div style={{ background: "#fff", borderBottom: "1px solid " + LINE, padding: "14px 28px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <div style={{ width: 36, height: 36, borderRadius: 9, background: BLUE, display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <Heart size={19} fill="#fff" color="#fff" />
-          </div>
+          <img src="/logo.png" alt="Bajaj Health" style={{ width: 36, height: 36, objectFit: "contain" }} />
           <div>
             <div style={{ fontSize: 16, fontWeight: 800, color: INK }}>Bajaj Finserv Health</div>
             <div style={{ fontSize: 12, color: MUTE }}>HR wellness dashboard</div>
@@ -139,9 +137,9 @@ export default function App() {
 
       <div style={{ padding: 24, maxWidth: 1240, margin: "0 auto" }}>
         <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 16 }}>
-          <Stat icon={Gauge} label="Corporate health score" value="78 / 100" delta="8 pts" up good />
+          <Stat icon={Gauge} label="Corporate health score" value="78%" delta="8 pts" up good />
           <Stat icon={Users} label="Participation rate" value="68%" delta="12%" up good />
-          <Stat icon={Activity} label="Engagement score" value="74 / 100" delta="9 pts" up good />
+          <Stat icon={Activity} label="Engagement score" value="74%" delta="9 pts" up good />
           <Stat icon={ShieldCheck} label="Predicted claims risk" value="Low" delta="15%" up={false} good />
         </div>
 
